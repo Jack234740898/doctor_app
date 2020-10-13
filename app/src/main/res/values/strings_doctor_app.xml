@@ -70,7 +70,7 @@
     <string name="verify_header">Verify Your Number</string>
     <string name="verify_instruction">Please verify your mobile number</string>
     <string name="phone_hint">Mobile Number</string>
-    <string name="phone_prefix">+91</string>
+    <string name="phone_prefix">+880</string>
     <string name="verify_btn">Verify</string>
     <string name="tnc_text">By verifying your number you agree to the</string>
     <string name="tnc">Terms &amp; Conditions</string>

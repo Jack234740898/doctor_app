@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/back"
+            android:layout_marginStart="16dp"
+            android:text="@string/view_vitals"
+            android:layout_alignTop="@+id/back"
+            android:layout_alignBottom="@+id/back"
+            android:gravity="center|start"
+            android:textSize="@dimen/text_18"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/temperatureLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/body_temperature_c"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pulse"
+            android:layout_alignEnd="@+id/pulse"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/_00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/pulseLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/temperatureLabel"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/pulse_rate_bpm"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/pulse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/respiration"
+            android:layout_alignEnd="@+id/respiration"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/_00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/respirationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pulseLabel"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/respiration_rate_pm"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/respiration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pressure"
+            android:layout_alignEnd="@+id/pressure"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/_00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/pressureLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/respirationLabel"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/blood_pressure_sys_dia"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/pressureLabel"
+            android:layout_alignTop="@+id/pressureLabel"
+            android:layout_alignBottom="@+id/pressureLabel"
+            android:layout_marginStart="16dp"
+            android:text="@string/_00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/weightLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pressureLabel"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/body_weight_kg"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pressure"
+            android:layout_alignEnd="@+id/pressure"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/_00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/sugarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weightLabel"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/blood_sugar_mmol_l"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight"
+            android:layout_alignEnd="@+id/weight"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="00"
+            android:textSize="@dimen/text_14"
+            android:textColor="@color/dark_grey"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sugarLabel"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="00"
+            android:textSize="@dimen/text_12"
+            android:textColor="@color/dark_grey"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

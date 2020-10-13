@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sftelehealth.doctor.video.view.call.VideoCallViewActivity;
 import com.squareup.picasso.Picasso;
 import com.sftelehealth.doctor.R;
 import com.sftelehealth.doctor.app.listener.CallbackDetailsEventListener;
@@ -211,9 +212,10 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
     }
 
     private void startVideoCall() {
-        Intent videoCallIntent = new Intent(getContext(), VideoConsultActivity.class);
+        Intent videoCallIntent = new Intent(getContext(), VideoCallViewActivity.class);
         videoCallIntent.putExtra(Constant.VIDEO_CALL_STATE, Constant.VIDEO_CALL_INITIATE);
-        videoCallIntent.putExtra("channel_name", viewModel.countryCode + "channel_callback_id_" + viewModel.callbackRequest.get().getCallbackId());
+        videoCallIntent.putExtra("channel_name", "BD_channel_callback_id_"+viewModel.callbackRequest.get().getCallbackId());
+        videoCallIntent.putExtra("callback_id", String.valueOf(viewModel.callbackRequest.get().getCallbackId()));
         videoCallIntent.putExtra("doctor_id", viewModel.doctor.getId());
         videoCallIntent.putExtra("doctor_name", viewModel.doctor.getName());
         videoCallIntent.putExtra("doctor_image", viewModel.doctor.getImage());
@@ -350,6 +352,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
                             if (viewModel.callbackRequest.get().getCaseId() != 0 && !viewModel.callbackRequest.get().getStatus().equalsIgnoreCase("Accepted"))
                                 startVideoEmergencyCall();
                             else
+//                                viewModel.initiateCall();
                                 startVideoCall();
                         }
 

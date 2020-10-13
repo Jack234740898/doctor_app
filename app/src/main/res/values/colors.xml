@@ -7,4 +7,7 @@
     <color name="colorAccent">@color/lightish_blue</color>
     <color name="colorSoftPrimary">@color/soft_blue</color>
     <color name="colorTabTint">@color/blue_tint</color>
+    <color name="localBackground">#827b92</color>
+    <color name="remoteBackground">#484258</color>
+    <color name="translucent_blur">#08111111</color>
 </resources>

@@ -54,12 +54,7 @@ public class DocumentViewFragment extends Fragment implements DocumentsViewPager
     BroadcastReceiver downloadStatusReceiver;
     IntentFilter downloadManagerIntent;
     boolean isReceiverRegistered;
-
     boolean startFileDownload = false;
-
-    public DocumentViewFragment() {
-        // Required empty public constructor
-    }
 
     public static DocumentViewFragment newInstance(String documentId) {
         DocumentViewFragment instance = new DocumentViewFragment();

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.sftelehealth.doctor">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -84,6 +83,9 @@
             android:name="com.sftelehealth.doctor.app.view.activity.ProfileDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.sftelehealth.doctor.video.view.call.VideoCallViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.sftelehealth.doctor.app.view.activity.CaseDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -107,6 +109,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.sftelehealth.doctor.app.view.activity.SignatureActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.VitalsHistoryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.sftelehealth.doctor.app.utils.crop.CropImageActivity"

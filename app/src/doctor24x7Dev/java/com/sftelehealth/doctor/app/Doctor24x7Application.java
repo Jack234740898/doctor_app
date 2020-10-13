@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.onesignal.OneSignal;
-import com.sftelehealth.doctor.BuildConfig;
 import com.sftelehealth.doctor.app.internal.di.components.ApplicationComponent;
 import com.sftelehealth.doctor.app.internal.di.components.DaggerApplicationComponent;
 import com.sftelehealth.doctor.app.internal.di.modules.ApplicationModule;
@@ -102,9 +101,6 @@ public class Doctor24x7Application extends MultiDexApplication {
     }
 
     private void initializeLeakDetection() {
-        if (BuildConfig.DEBUG) {
-            // LeakCanary.install(this);
-        }
     }
 
     private void initializeLogging() {

@@ -1,6 +1,5 @@
 package com.sftelehealth.doctor.app.view.fragment;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.sftelehealth.doctor.app.view.activity.VitalsHistoryActivity;
+import com.sftelehealth.doctor.app.view.adapter.VitalsListAdapter;
+import com.sftelehealth.doctor.domain.model.Vitals;
 import com.squareup.picasso.Picasso;
 import com.sftelehealth.doctor.R;
 import com.sftelehealth.doctor.app.listener.CaseDetailsEventListener;
@@ -45,13 +47,14 @@ import io.reactivex.disposables.Disposable;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CaseDetailsActivityFragment extends Fragment implements CaseDetailsEventListener, DocumentsListAdapter.DocumentsListListener, PrescriptionListAdapter.PrescriptionListListener, PermissionsHelper.PermissionCallback {
+public class CaseDetailsActivityFragment extends Fragment implements CaseDetailsEventListener, DocumentsListAdapter.DocumentsListListener, PrescriptionListAdapter.PrescriptionListListener, VitalsListAdapter.VitalsListListener, PermissionsHelper.PermissionCallback {
 
     FragmentCaseDetailsActivityBinding binding;
     CaseDetailsActivityFragmentViewModel viewModel;
 
     DocumentsListAdapter documentsAdapter;
     PrescriptionListAdapter prescriptionsAdapter;
+    VitalsListAdapter vitalsListAdapter;
 
     Disposable intervalSubscription;
 
@@ -147,6 +150,7 @@ public class CaseDetailsActivityFragment extends Fragment implements CaseDetails
                     // load data for the prescription list as well as the documents fragment
                     binding.setCaseItem(viewModel.caseObject.get());
 
+
                     Picasso.with(getContext())
                             .load(viewModel.caseObject.get().getPatientImage())
                             .placeholder(R.drawable.profile)
@@ -184,6 +188,22 @@ public class CaseDetailsActivityFragment extends Fragment implements CaseDetails
                         binding.prescriptionListContainer.prescriptionsDefaultText.setVisibility(View.VISIBLE);
                         binding.addPrescription.setVisibility(View.VISIBLE);
                     }
+
+                    if (viewModel.caseObject.get().getPrescriptionAndDocuments().getVitals().size() > 0) {
+                        vitalsListAdapter = new VitalsListAdapter(viewModel.caseObject.get().getPrescriptionAndDocuments().getVitals(), CaseDetailsActivityFragment.this);
+                        LinearLayoutManager vitalsLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                        binding.vitalsListContainer.prescriptionList.setLayoutManager(vitalsLayoutManager);
+                        binding.vitalsListContainer.prescriptionList.addItemDecoration(new SpacesItemDecoration(8, 16, 8, 16));
+                        binding.vitalsListContainer.prescriptionList.setAdapter(vitalsListAdapter);
+
+                    } else {
+                        binding.vitalsListContainer.prescriptionList.setVisibility(View.GONE);
+                        binding.vitalsListContainer.prescriptionsDefaultText.setVisibility(View.GONE);
+                    }
+
+                    binding.assesmentListContainer.prescriptionList.setVisibility(View.GONE);
+                    binding.assesmentHeader.setVisibility(View.GONE);
+                    binding.assesmentListTag.setVisibility(View.GONE);
 
                     // Dispose off the subscription to stop interval observable
                     /*if(!viewModel.hasCallStarted && intervalSubscription != null && !intervalSubscription.isDisposed())
@@ -454,5 +474,12 @@ public class CaseDetailsActivityFragment extends Fragment implements CaseDetails
             break;
             default: viewModel.startCall = false;
         }
+    }
+
+    @Override
+    public void onVitalsClicked(Vitals vitals) {
+        Intent intent = new Intent(getActivity(), VitalsHistoryActivity.class);
+        intent.putExtra("VITALS", vitals);
+        startActivity(intent);
     }
 }

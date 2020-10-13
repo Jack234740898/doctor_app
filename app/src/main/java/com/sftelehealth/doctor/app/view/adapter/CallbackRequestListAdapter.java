@@ -88,7 +88,6 @@ public class CallbackRequestListAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public int getItemViewType(int position) {
-
         return callbackRequestList.get(position) != null ? VIEW_ITEM : VIEW_PROGRESS;
     }
 
