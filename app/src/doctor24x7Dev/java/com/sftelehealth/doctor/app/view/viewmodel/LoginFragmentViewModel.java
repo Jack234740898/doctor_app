@@ -8,6 +8,7 @@ import com.sftelehealth.doctor.domain.interactor.GenerateOTP;
 import com.sftelehealth.doctor.domain.interactor.IsUserAuthenticated;
 import com.sftelehealth.doctor.domain.model.Doctor;
 import com.sftelehealth.doctor.domain.model.response.IsUserAuthenticatedResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 
 import java.util.HashMap;
 
@@ -30,7 +31,7 @@ public class LoginFragmentViewModel extends ViewModel {
     //SystemDataRepository systemDataRepository;
 
     public final ObservableField<String> phoneNumber = new ObservableField<>();
-    public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
+    public MutableLiveData<SendOtpResponse> isRegistered = new MutableLiveData<>();
     public MutableLiveData<IsUserAuthenticatedResponse> isAuthenticated = new MutableLiveData<>();
     public MutableLiveData<Boolean> doctorDataFetched = new MutableLiveData<>();
     public Doctor doctor;
@@ -46,10 +47,10 @@ public class LoginFragmentViewModel extends ViewModel {
 
     public void generateOTP(String countryCode) {
 
-        generateOTP.execute(new DisposableObserver<Boolean>() {
+        generateOTP.execute(new DisposableObserver<SendOtpResponse>() {
             @Override
-            public void onNext(Boolean aBoolean) {
-                isRegistered.postValue(aBoolean);
+            public void onNext(SendOtpResponse sendOtpResponse) {
+                isRegistered.postValue(sendOtpResponse);
             }
 
             @Override

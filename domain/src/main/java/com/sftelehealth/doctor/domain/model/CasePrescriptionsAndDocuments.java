@@ -15,6 +15,8 @@ public class CasePrescriptionsAndDocuments {
     private Integer doctorCategoryId;
     private List<Document> docs = new ArrayList<>();
     private List<Prescription> prescriptions = new ArrayList<>();
+    private List<Vitals> vitals = new ArrayList<>();
+    private List<Prescription> assesments = new ArrayList<>();
 
     public Integer getCaseId() {
         return caseId;
@@ -62,5 +64,21 @@ public class CasePrescriptionsAndDocuments {
 
     public void setDoctorCategoryId(Integer doctorCategoryId) {
         this.doctorCategoryId = doctorCategoryId;
+    }
+
+    public List<Vitals> getVitals() {
+        return vitals;
+    }
+
+    public void setVitals(List<Vitals> vitals) {
+        this.vitals = vitals;
+    }
+
+    public List<Prescription> getAssesments() {
+        return assesments;
+    }
+
+    public void setAssesments(List<Prescription> assesments) {
+        this.assesments = assesments;
     }
 }

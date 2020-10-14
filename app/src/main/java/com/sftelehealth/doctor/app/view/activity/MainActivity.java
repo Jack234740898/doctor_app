@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +31,7 @@ import com.sftelehealth.doctor.app.view.fragment.DashboardFragment;
 import com.sftelehealth.doctor.app.view.fragment.DoctorProfileFragment;
 import com.sftelehealth.doctor.app.view.helper.SnackbarHelper;
 import com.sftelehealth.doctor.app.view.utils.ActivityUtils;
+import com.sftelehealth.doctor.data.database.DatabaseObject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -62,6 +66,7 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
     PermissionsHelper ph;
 
     BroadcastReceiver agoraCallStatusListener;
+    public SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +82,7 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
 
         ActivityUtils.showHideStatusBarCallStatusBar(this);
         agoraCallStatusListener = ActivityUtils.getVideoCallStatusReceiver(this);
-
+        sp = getApplication().getSharedPreferences(Constant.USER_PREFS, Context.MODE_PRIVATE);
         ph = new PermissionsHelper();
 
         receiver = new BroadcastReceiver() {
@@ -216,16 +221,35 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
             }
         } else if (v.getId() == R.id.rate) {
 
-            final String appPackageName = getPackageName(); // from Context or Activity object
-            try {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.traktion.doctor")));
-            } catch (android.content.ActivityNotFoundException anfe) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.traktion.doctor")));
-            }
+            //TODO LOGOUT
+
+            dbClear();
+            sp.edit().clear().commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+//            final String appPackageName = getPackageName(); // from Context or Activity object
+//            try {
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.traktion.doctor")));
+//            } catch (android.content.ActivityNotFoundException anfe) {
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.traktion.doctor")));
+//            }
         }
 
         if (v.getId() != R.id.homeButton)
             drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void dbClear() {
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                DatabaseObject.clearAllTables();
+            }
+        });
+
     }
 
     private void displayView(int position) {

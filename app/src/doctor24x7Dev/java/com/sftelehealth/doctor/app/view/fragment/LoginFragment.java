@@ -34,6 +34,7 @@ import com.sftelehealth.doctor.app.view.helper.SnackbarHelper;
 import com.sftelehealth.doctor.app.view.viewmodel.LoginFragmentViewModel;
 import com.sftelehealth.doctor.databinding.FragmentLoginBinding;
 import com.sftelehealth.doctor.domain.model.response.IsUserAuthenticatedResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 
 import java.util.concurrent.TimeUnit;
 
@@ -80,14 +81,14 @@ public class LoginFragment extends BaseFragment implements LoginListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 
         // setUpCustomLayoutForDatePicker();
         //binding = FragmentLoginBinding.inflate(inflater, container, false);
-
+        binding.mainContainer.setVisibility(View.VISIBLE);
+        binding.splashScreen.setVisibility(View.GONE);
         viewModel = ((LoginActivity)getActivity()).obtainViewModel(getActivity());
         //binding.setView(this);
         binding.setViewmodel(viewModel);
@@ -163,11 +164,11 @@ public class LoginFragment extends BaseFragment implements LoginListener {
             }
         });
 
-        viewModel.isRegistered.observe(this, new Observer<Boolean>() {
+        viewModel.isRegistered.observe(this, new Observer<SendOtpResponse>() {
             @Override
-            public void onChanged(@Nullable Boolean aBoolean) {
-                if(aBoolean)
-                    Navigator.navigateToOTPConfirmation(getContext(), viewModel.phoneNumber.get());
+            public void onChanged(@Nullable SendOtpResponse sendOtpResponse) {
+                if(sendOtpResponse.isRegistered())
+                    Navigator.navigateToOTPConfirmation(getContext(), viewModel.phoneNumber.get(), sendOtpResponse.getOtp());
                 else
                     SnackbarHelper.getCustomSnackBar(binding.getRoot(), "You are not registered on our platform.\nPlease contact at team@doctor24x7.in", null, SnackbarHelper.SnackbarTypes.ERROR).show();
             }

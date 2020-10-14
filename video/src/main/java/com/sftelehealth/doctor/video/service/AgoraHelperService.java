@@ -26,7 +26,6 @@ import com.sftelehealth.doctor.video.agora.key.DynamicKey4;
 import com.sftelehealth.doctor.video.agora.message.AgoraMessageHelper;
 import com.sftelehealth.doctor.video.helper.CallDataHelper;
 import com.sftelehealth.doctor.video.internal.di.components.CoreVideoComponent;
-import com.sftelehealth.doctor.video.internal.di.components.DaggerCoreVideoComponent;
 import com.sftelehealth.doctor.video.internal.di.components.DaggerServiceComponent;
 import com.sftelehealth.doctor.video.internal.di.modules.CoreVideoModule;
 import com.sftelehealth.doctor.video.models.Doctor;
@@ -152,7 +151,7 @@ public class AgoraHelperService extends Service implements RtcEngineEventHandler
 
     private void initializeInjector() {
 
-        coreVideoComponent = DaggerCoreVideoComponent.builder().coreVideoModule(new CoreVideoModule(this)).build();
+//        coreVideoComponent = DaggerCoreVideoComponent.builder().coreVideoModule(new CoreVideoModule(this)).build();
 
         // coreVideoComponent.inject(this);
 

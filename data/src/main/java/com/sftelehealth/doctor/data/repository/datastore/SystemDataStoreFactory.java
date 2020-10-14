@@ -15,6 +15,7 @@ import com.sftelehealth.doctor.data.model.request.SendOtpRequest;
 import com.sftelehealth.doctor.data.model.request.UpdateDoctorRequest;
 import com.sftelehealth.doctor.data.model.response.IsUserAuthenticatedResponse;
 import com.sftelehealth.doctor.data.model.response.LoginResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 import com.sftelehealth.doctor.data.model.response.ShouldUpdateResponse;
 import com.sftelehealth.doctor.data.model.response.UpdateDoctorResponse;
 import com.sftelehealth.doctor.data.net.AuthCodeProvider;
@@ -50,12 +51,12 @@ public class SystemDataStoreFactory implements SystemDataStore {
     }
 
     @Override
-    public Observable<Boolean> checkRegistration(String phone) {
+    public Observable<SendOtpResponse> checkRegistration(String phone) {
 
         SendOtpRequest otpRequest = new SendOtpRequest();
         otpRequest.setPhone(phone);
 
-        return coreApi.checkRegistration(otpRequest).map(sendOtpResponse -> sendOtpResponse.isRegistered());
+        return coreApi.checkRegistration(otpRequest).map(sendOtpResponse -> sendOtpResponse);
     }
 
     @Override

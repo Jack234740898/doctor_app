@@ -2,6 +2,7 @@ package com.sftelehealth.doctor.data.repository;
 
 import com.sftelehealth.doctor.data.entity.mapper.DoctorEntityMapper;
 import com.sftelehealth.doctor.data.model.request.LoginRequest;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 import com.sftelehealth.doctor.data.repository.datastore.SystemDataStore;
 import com.sftelehealth.doctor.domain.model.Doctor;
 import com.sftelehealth.doctor.domain.model.SystemInfo;
@@ -30,7 +31,7 @@ public class SystemDataRepository implements SystemRepository {
     }
 
     @Override
-    public Observable<Boolean> checkRegistration(String phone) {
+    public Observable<SendOtpResponse> checkRegistration(String phone) {
         return systemDataStore.checkRegistration(phone);
     }
 

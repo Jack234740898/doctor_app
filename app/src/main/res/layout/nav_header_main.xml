@@ -70,7 +70,7 @@
             style="@style/custom_about_menu"
             android:layout_height="wrap_content"
             android:background="@drawable/side_nav_item_bg"
-            android:text="Rate the app"
+            android:text="Logout"
             android:onClick="handleClick"/>
 
         <Button

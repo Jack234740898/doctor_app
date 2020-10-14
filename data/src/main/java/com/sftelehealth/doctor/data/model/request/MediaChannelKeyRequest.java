@@ -3,9 +3,9 @@ package com.sftelehealth.doctor.data.model.request;
 public class MediaChannelKeyRequest {
 
     String channelName;
-    String uid;
+    String uid;//doctorID
     int expiredTs;
-    int userId;
+    int userId;//patientUserId
     boolean emergencyCall;
 
     public String getChannelName() {

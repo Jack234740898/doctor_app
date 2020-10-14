@@ -58,8 +58,8 @@ public class ConfirmationFragment extends Fragment implements SMSReceiver.OTPRec
         viewModel = ((ConfirmationActivity)getActivity()).obtainViewModel(getActivity());
         binding.setViewmodel(viewModel);
 
-        setUpData();
         setUpObservables();
+        setUpData();
 
         viewModel.beginCountDown();
 
@@ -75,6 +75,9 @@ public class ConfirmationFragment extends Fragment implements SMSReceiver.OTPRec
     private void setUpData() {
         if(getActivity().getIntent().hasExtra(Constant.PHONE))
             binding.getViewmodel().phoneNumber.set(getActivity().getIntent().getStringExtra(Constant.PHONE));
+
+        if(getActivity().getIntent().hasExtra(Constant.OTP))
+            viewModel.generatedOTP.postValue(getActivity().getIntent().getStringExtra(Constant.OTP));
     }
 
     private void setUpObservables() {
@@ -101,6 +104,13 @@ public class ConfirmationFragment extends Fragment implements SMSReceiver.OTPRec
                     binding.waitingForOTP.setText("Resend OTP");
                     binding.timerText.setVisibility(View.INVISIBLE);
                 }
+            }
+        });
+
+        viewModel.generatedOTP.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.verificationCode.setText(s);
             }
         });
     }

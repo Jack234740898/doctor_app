@@ -120,4 +120,10 @@ public class DatabaseObject {
 
         return columns;
     }
+
+    public static void clearAllTables(){
+        if (dbInstance != null) {
+            dbInstance.clearAllTables();
+        }
+    }
 }

@@ -35,9 +35,9 @@ public class VideoDataStoreFactory implements VideoDataStore {
         request.setExpiredTs(0);
         request.setUserId(Integer.valueOf(patientUserId));
 
-        if(channelName.contains("callback"))
-            request.setEmergencyCall(false);
-        else
+//        if(channelName.contains("callback"))
+//            request.setEmergencyCall(false);
+//        else
             request.setEmergencyCall(true);
 
         return restApi.getMediaChannelKey(request);

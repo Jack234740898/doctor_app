@@ -102,18 +102,18 @@ public class Document {
 
     public String getDocumentType() {
         String dataType = "jpg";
-        int i = this.getUrl().lastIndexOf('.');
+        int i = this.getPreviewUrl().lastIndexOf('.');
         if (i > 0) {
-            dataType = this.getUrl().substring(i+1);
+            dataType = this.getPreviewUrl().substring(i+1);
         }
         return (dataType.equalsIgnoreCase("pdf") ? PDF : IMAGE);
     }
 
     public String getDocumentFileExtension() {
         String dataType = "jpg";
-        int i = this.getUrl().lastIndexOf('.');
+        int i = this.getPreviewUrl().lastIndexOf('.');
         if (i > 0) {
-            dataType = this.getUrl().substring(i+1);
+            dataType = this.getPreviewUrl().substring(i+1);
         }
         return dataType;
     }

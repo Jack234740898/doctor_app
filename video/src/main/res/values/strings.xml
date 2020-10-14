@@ -9,4 +9,11 @@
     <string name="pause">Pause</string>
     <string name="end_call">End Call</string>
 
+    <string name="agora_app_id">889ade6394ef4f808a45bafb4243b2b4</string>
+    <!-- Obtain a temp Access Token at https://dashboard.agora.io -->
+    <!-- You will need to deploy your own token server for production release -->
+    <!-- Leave this value empty if Security keys/Token is not enabled for your project -->
+    <string name="certificate">472f82bc4e0947edb20c8592f016f1f8</string>
+
+
 </resources>

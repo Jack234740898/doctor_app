@@ -220,7 +220,8 @@ public class CallbackRequest {
             if (status.equalsIgnoreCase("Pending")) {
                 return dtch.getRemainingTimeFormattedString(DateTimeHelper.parseAlmostISO8601DateTimeWithTSeparator(autoRejectAt));
             } else if (status.equalsIgnoreCase("Accepted") || status.equalsIgnoreCase("Patient Disconnected") || status.equalsIgnoreCase("Doctor Disconnected")) {
-                return DateTimeHelper.toLocaleDayTimeYear(dtch.convertGMTToIST(DateTimeHelper.parseAlmostISO8601DateTimeWithTSeparator(videoStartTime)));
+                return "";
+                //                return DateTimeHelper.toLocaleDayTimeYear(dtch.convertGMTToIST(DateTimeHelper.parseAlmostISO8601DateTimeWithTSeparator(videoStartTime)));
             } else {
                 return "";
             }

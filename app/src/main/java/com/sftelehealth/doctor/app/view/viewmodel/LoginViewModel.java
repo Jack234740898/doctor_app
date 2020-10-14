@@ -8,6 +8,8 @@ import android.view.View;
 import javax.inject.Inject;
 
 import com.sftelehealth.doctor.domain.interactor.GenerateOTP;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
+
 import io.reactivex.observers.DisposableObserver;
 
 /**
@@ -27,10 +29,10 @@ public class LoginViewModel extends ViewModel {
 
     public void generateOTP(View verifyButtonView) {
 
-        generateOTPUseCase.execute(new DisposableObserver<Boolean>() {
+        generateOTPUseCase.execute(new DisposableObserver<SendOtpResponse>() {
             @Override
-            public void onNext(Boolean aBoolean) {
-                Log.d("TAG", "otp generated: " + aBoolean);
+            public void onNext(SendOtpResponse aBoolean) {
+                Log.d("TAG", "otp generated: " + aBoolean.isRegistered());
                 // send message from the activity to change the fragment to verify the OTP
                 // navigator.verifyOtp();
             }

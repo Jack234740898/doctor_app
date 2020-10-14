@@ -4,6 +4,7 @@ import com.sftelehealth.doctor.data.database.entity.SystemInfo;
 import com.sftelehealth.doctor.data.model.request.LoginRequest;
 import com.sftelehealth.doctor.data.model.response.IsUserAuthenticatedResponse;
 import com.sftelehealth.doctor.data.model.response.LoginResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 import com.sftelehealth.doctor.data.model.response.ShouldUpdateResponse;
 import com.sftelehealth.doctor.data.model.response.UpdateDoctorResponse;
 
@@ -21,7 +22,7 @@ public interface SystemDataStore {
      * @param phone
      * @return
      */
-    Observable<Boolean> checkRegistration(String phone);
+    Observable<SendOtpResponse> checkRegistration(String phone);
 
     /**
      *

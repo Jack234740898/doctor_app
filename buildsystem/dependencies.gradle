@@ -12,7 +12,7 @@ ext {
   androidCompileSdkVersion = 28
 
   //Libraries
-  daggerVersion = '2.0.2'
+  daggerVersion = '2.28.1'
   recyclerViewVersion = '1.0.0-beta01'
   /*rxJavaVersion = '1.0.14'
   rxAndroidVersion = '1.0.1'*/
@@ -63,6 +63,7 @@ ext {
   presentationDependencies = [
           daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
           dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          daggerProcessor:    "com.google.dagger:dagger-android-processor${daggerVersion}",
           recyclerView:       "androidx.recyclerview:recyclerview:${recyclerViewVersion}",
           gson:               "com.google.code.gson:gson:${gsonVersion}",
           loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${loggingIntercepter}",
@@ -106,6 +107,7 @@ ext {
   domainDependencies = [
           daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
           dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          daggerAndroidProcessor: "com.google.dagger:dagger-android-processor${daggerVersion}",
           gson:               "com.google.code.gson:gson:${gsonVersion}",
           javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
           rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
@@ -120,6 +122,7 @@ ext {
   dataDependencies = [
           daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
           dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          daggerAndroidProcessor: "com.google.dagger:dagger-android-processor${daggerVersion}",
           okHttp:             "com.squareup.okhttp3:okhttp:${okHttpVersion}",
           gson:               "com.google.code.gson:gson:${gsonVersion}",
           rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
@@ -158,6 +161,7 @@ ext {
           lifecycle:          "androidx.lifecycle:lifecycle-extensions:${lifecycle}",
           daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
           dagger:             "com.google.dagger:dagger:${daggerVersion}",
-          constraintLayout:   "androidx.constraintlayout:constraintlayout:${constraintLayout}"
+          daggerAndroidProcessor: "com.google.dagger:dagger-android-processor${daggerVersion}",
+          constraintLayout:   "androidx.constraintlayout:constraintlayout:${constraintLayout}",
   ]
 }

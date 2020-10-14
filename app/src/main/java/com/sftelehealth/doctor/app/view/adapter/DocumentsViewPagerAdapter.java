@@ -62,7 +62,7 @@ public class DocumentsViewPagerAdapter extends PagerAdapter {
                 .into(binding.documentImage);
         else
             Picasso.with(container.getContext())
-                    .load(documents.get(position).getUrl())
+                    .load(documents.get(position).getPreviewUrl())
                     .placeholder(R.drawable.circular_loading_animation)
                     .into(binding.documentImage);
 

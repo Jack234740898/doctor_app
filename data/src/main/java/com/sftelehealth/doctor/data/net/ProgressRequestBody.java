@@ -31,7 +31,7 @@ public class ProgressRequestBody extends RequestBody {
     private String mPath;
     private UploadCallbacks mListener;
 
-    public static final String STATUS_UPDATE = BuildConfig.APPLICATION_ID + ".services.action.TEXT_TO_SPEECH";
+//    public static final String STATUS_UPDATE = BuildConfig.APPLICATION_ID + ".services.action.TEXT_TO_SPEECH";
 
     private static final int DEFAULT_BUFFER_SIZE = 2048;
 

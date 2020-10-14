@@ -1,11 +1,12 @@
-package com.sftelehealth.doctor.data.model.response;
+package com.sftelehealth.doctor.domain.model.response;
 
 /**
  * Created by rahul on 02/10/16.
  */
-public class SendOtpResponse extends BasicResponse {
+public class SendOtpResponse {
 
     boolean success, isRegistered;
+    String otp;
 
     public boolean isSuccess() {
         return success;
@@ -21,5 +22,13 @@ public class SendOtpResponse extends BasicResponse {
 
     public void setRegistered(boolean registered) {
         isRegistered = registered;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 }

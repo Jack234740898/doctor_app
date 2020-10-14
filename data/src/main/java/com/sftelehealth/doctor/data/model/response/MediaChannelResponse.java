@@ -4,6 +4,10 @@ public class MediaChannelResponse {
 
     String mediaChannelKey;
 
+    public MediaChannelResponse(String mediaChannelKey) {
+        this.mediaChannelKey = mediaChannelKey;
+    }
+
     public String getMediaChannelKey() {
         return mediaChannelKey;
     }

@@ -4,8 +4,10 @@ package com.sftelehealth.doctor.domain.repository;
 import com.sftelehealth.doctor.domain.model.Doctor;
 import com.sftelehealth.doctor.domain.model.SystemInfo;
 import com.sftelehealth.doctor.domain.model.response.IsUserAuthenticatedResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 import com.sftelehealth.doctor.domain.model.response.ShouldUpdateResponse;
 import com.sftelehealth.doctor.domain.model.response.UpdateDoctorResponse;
+
 
 import java.util.HashMap;
 
@@ -22,7 +24,7 @@ public interface SystemRepository {
      * @param phone
      * @return
      */
-    Observable<Boolean> checkRegistration(String phone);
+    Observable<SendOtpResponse> checkRegistration(String phone);
 
     /**
      *

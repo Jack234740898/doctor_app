@@ -174,7 +174,7 @@ public class DocumentViewFragment extends Fragment implements DocumentsViewPager
                 openSelectedDocument(fdh.getInternalFilePath(selectedDocument.getId() + "." + selectedDocument.getDocumentFileExtension(), true));
             } else {
                 // else download the PDF and put a receiver when the download completes
-                fdh.downloadFile(selectedDocument.getUrl(), selectedDocument.getTitle(), "download in progress...", Integer.parseInt(selectedDocument.getId()), selectedDocument.getDocumentFileExtension());
+                fdh.downloadFile(selectedDocument.getPreviewUrl(), selectedDocument.getTitle(), "download in progress...", Integer.parseInt(selectedDocument.getId()), selectedDocument.getDocumentFileExtension());
                 getActivity().registerReceiver(downloadStatusReceiver, downloadManagerIntent);
                 isReceiverRegistered = true;
             }

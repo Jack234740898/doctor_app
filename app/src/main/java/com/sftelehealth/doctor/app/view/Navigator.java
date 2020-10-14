@@ -18,11 +18,12 @@ import com.sftelehealth.doctor.app.view.activity.SignatureActivity;
 
 public class Navigator {
 
-    public static void navigateToOTPConfirmation(Context context, String phone) {
+    public static void navigateToOTPConfirmation(Context context, String phone, String otp) {
         Intent intent = new Intent();
         intent.setClass(context, ConfirmationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(Constant.PHONE, phone);
+        intent.putExtra(Constant.OTP, otp);
         context.startActivity(intent);
     }
 

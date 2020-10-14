@@ -24,7 +24,7 @@ import com.sftelehealth.doctor.data.model.response.DoctorCasesResponse;
 import com.sftelehealth.doctor.data.model.response.DoctorImageUpdateResponse;
 import com.sftelehealth.doctor.data.model.response.GetAllTimeSlotsResponse;
 import com.sftelehealth.doctor.data.model.response.LoginResponse;
-import com.sftelehealth.doctor.data.model.response.SendOtpResponse;
+import com.sftelehealth.doctor.domain.model.response.SendOtpResponse;
 import com.sftelehealth.doctor.data.model.response.ShouldUpdateResponse;
 import com.sftelehealth.doctor.data.model.response.StartDoctorCallResponse;
 import com.sftelehealth.doctor.data.model.response.UpdateDoctorResponse;
@@ -53,7 +53,7 @@ public interface CoreApi {
      * @param phone, phone - the phone number for which the OTP has to be generated
      * @return {@link SendOtpResponse}, isRegistered - whether the doctor is registered on our platform
      */
-    @Headers({"Authorization:Bearer ksjdfsmslsdjkpass","Content-Type:application/json"})
+    @Headers({"Authorization:Bearer p2S80tdxdrVjGC9F6wbn","Content-Type:application/json"})
     @POST("doctor/sendOtp")
     Observable<SendOtpResponse> checkRegistration(@Body SendOtpRequest phone);
 
@@ -62,7 +62,7 @@ public interface CoreApi {
      * @param login, set phone, otp, email and appVersion in this model
      * @return {@link LoginResponse}
      */
-    @Headers({"Authorization:Bearer ksjdfsmslsdjkpass","Content-Type:application/json"})
+    @Headers({"Authorization:Bearer p2S80tdxdrVjGC9F6wbn","Content-Type:application/json"})
     @POST("doctor/login")
     Observable<LoginResponse> doctorVerify(@Body LoginRequest login);
 
@@ -256,4 +256,10 @@ public interface CoreApi {
      */
     @GET("prescription/getMedicineTypes")
     Observable<List<MedicineType>> getMedicineTypes (@Header("Authorization") String authCode);
+
+    @POST("doctor/callbackCompleted")
+    Observable<CancelCallbackResponse> completedAppointment (
+            @Header("Authorization") String authCode,
+            @Body CallbackUpdateRequest callbackUpdateRequest
+    );
 }

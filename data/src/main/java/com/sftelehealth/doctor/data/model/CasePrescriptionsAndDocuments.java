@@ -1,5 +1,7 @@
 package com.sftelehealth.doctor.data.model;
 
+import com.sftelehealth.doctor.domain.model.Vitals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class CasePrescriptionsAndDocuments {
     private Integer doctorCategoryId;
     private List<Document> docs = new ArrayList<>();
     private List<Prescription> prescriptions = new ArrayList<>();
+    private List<Vitals> vitals = new ArrayList<>();
 
     public Integer getCaseId() {
         return caseId;
@@ -62,5 +65,13 @@ public class CasePrescriptionsAndDocuments {
 
     public void setDoctorCategoryId(Integer doctorCategoryId) {
         this.doctorCategoryId = doctorCategoryId;
+    }
+
+    public List<Vitals> getVitals() {
+        return vitals;
+    }
+
+    public void setVitals(List<Vitals> vitals) {
+        this.vitals = vitals;
     }
 }
