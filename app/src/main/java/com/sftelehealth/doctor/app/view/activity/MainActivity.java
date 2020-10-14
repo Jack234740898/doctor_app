@@ -32,6 +32,7 @@ import com.sftelehealth.doctor.app.view.fragment.DoctorProfileFragment;
 import com.sftelehealth.doctor.app.view.helper.SnackbarHelper;
 import com.sftelehealth.doctor.app.view.utils.ActivityUtils;
 import com.sftelehealth.doctor.data.database.DatabaseObject;
+import com.sftelehealth.doctor.data.net.AuthCodeProvider;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -225,6 +226,7 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
 
             dbClear();
             sp.edit().clear().commit();
+            AuthCodeProvider.setAuthCode(this);
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

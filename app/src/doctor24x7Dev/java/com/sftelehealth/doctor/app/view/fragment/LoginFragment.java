@@ -87,8 +87,8 @@ public class LoginFragment extends BaseFragment implements LoginListener {
 
         // setUpCustomLayoutForDatePicker();
         //binding = FragmentLoginBinding.inflate(inflater, container, false);
-        binding.mainContainer.setVisibility(View.VISIBLE);
-        binding.splashScreen.setVisibility(View.GONE);
+//        binding.mainContainer.setVisibility(View.VISIBLE);
+//        binding.splashScreen.setVisibility(View.GONE);
         viewModel = ((LoginActivity)getActivity()).obtainViewModel(getActivity());
         //binding.setView(this);
         binding.setViewmodel(viewModel);
