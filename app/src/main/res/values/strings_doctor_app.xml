@@ -35,7 +35,7 @@
     <string name="toolbar_registration">Verify Mobile Number</string>
     <string name="toolbar_verification">Signup</string>
     <string name="toolbar_profile">Your Profile</string>
-    <string name="toolbar_doctor24_7">Doctor24x7</string>
+    <string name="toolbar_doctor24_7">Sajida TeleHealth</string>
     <string name="toolbar_select_image">Select Image</string>
     <string name="toolbar_time_slots">Time Slots</string>
 
@@ -69,6 +69,7 @@
     <!-- Registration Activity -->
     <string name="verify_header">Verify Your Number</string>
     <string name="verify_instruction">Please verify your mobile number</string>
+    <string name="login">Login</string>
     <string name="phone_hint">Mobile Number</string>
     <string name="phone_prefix">+880</string>
     <string name="verify_btn">Verify</string>
@@ -128,9 +129,9 @@
 
 
     <string name="prescriptionWarning">* This medical advice is based on the symptoms provided by you over the telephonic consult. This is not intended to replace a physical examination by a doctor. Please visit a Doctor/Hospital for further management if your condition does not improve.</string>
-    <string name="about_us_info">Doctor 24x7 was created to make qualified, experienced and licensed Doctors accessible, instantly, for telephonic medical consults.</string>
-    <string name="tag_line">\nAvailable 24x7x365. From anywhere in India.</string>
-    <string name="team_message">The team behind the creation of Doctor 24x7 comprises alumni from IIMC, and BITS Pilani along with eminent Doctors.</string>
+    <string name="about_us_info">Sajida TeleHealth was created to make qualified, experienced and licensed Doctors accessible, instantly, for telephonic medical consults.</string>
+    <string name="tag_line">\nAvailable 24x7x365. From anywhere in Bangladesh.</string>
+    <string name="team_message">The team behind the creation of Sajida TeleHealth comprises alumni from IIMC, and BITS Pilani along with eminent Doctors.</string>
 
 
     <string name="NoDocuments">No documents have been uploaded by patient</string>

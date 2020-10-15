@@ -63,7 +63,6 @@ public class LoginFragment extends BaseFragment implements LoginListener {
 
     PermissionsHelper permissionsHelper;
     public static final int MY_PERMISSIONS_REQUEST_READ_SMS = 1;
-
     boolean canReadSMS = false;
 
     public LoginFragment() {}

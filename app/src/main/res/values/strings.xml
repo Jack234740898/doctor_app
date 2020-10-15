@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sajida Telehealth Doctor</string>
+    <string name="app_name">SAJIDA Telehealth Doctor</string>
 
     <!-- Main Activity -->
     <string name="no_consults">No Active Consults.\nYou can see patient records here once a consult is complete.</string>
@@ -8,7 +8,8 @@
     <!-- Login Activity -->
     <string name="title_activity_login">Login to ur account</string>
     <string name="PleaseEnterYourPhone">Please enter your phone number</string>
-
+    <string name="app_name_demo">SAJIDA Telehealth</string>
+    <string name="doctor_user_app">Doctor User App</string>
     <string name="completed_consults">Completed Consults</string>
 
     <string name="callback_requests">Callback Requests</string>
