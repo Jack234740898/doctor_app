@@ -22,6 +22,14 @@ public class AuthCodeProvider {
         return authCode;
     }
 
+    public static String setAuthCode(Context context) {
+        if(authCode != null) {
+            getSharedPreference(context).edit().putString("auth_code", null).apply();
+            authCode = null;
+        }
+        return authCode;
+    }
+
     public static SharedPreferences getSharedPreference(Context context) {
 
         return context.getSharedPreferences(BuildConfig.APP_ENVIRONMENT.replace(".data","")+".user_prefs", Context.MODE_PRIVATE);
