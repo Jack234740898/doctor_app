@@ -124,7 +124,10 @@
 
         <service
             android:name="com.sftelehealth.doctor.app.services.CleanUpSpaceService"
-            android:exported="false"></service>
+            android:exported="false"/>
+
+        <service
+            android:name="com.sftelehealth.doctor.video.view.call.CallService" />
 
         <!--<receiver
             android:name=".app.receiver.SMSReceiver"

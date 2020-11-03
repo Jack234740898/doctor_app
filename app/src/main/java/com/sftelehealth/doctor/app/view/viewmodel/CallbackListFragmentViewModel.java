@@ -94,7 +94,7 @@ public class CallbackListFragmentViewModel extends ViewModel {
                 phone = shouldUpdateResponse.getPhone();
                 mustUpdateApp = shouldUpdateResponse.isMustUpdate();
 
-                systemDataResponseFetched.postValue(true);
+//                systemDataResponseFetched.postValue(true);
             }
 
             @Override

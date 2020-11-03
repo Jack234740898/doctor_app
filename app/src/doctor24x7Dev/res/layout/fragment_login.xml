@@ -145,6 +145,7 @@
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/tnc_text"
                     android:textAlignment="center"
+                    android:visibility="gone"
                     android:textSize="@dimen/normal_text" />
 
                 <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
@@ -152,6 +153,7 @@
                     style="@style/TextAppearance.Hyperlink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:onClick="@{() -> listener.viewTermsAndConditions()}"
                     android:text="@string/tnc"
                     android:textAlignment="center"

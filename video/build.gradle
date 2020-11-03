@@ -45,8 +45,8 @@ android {
         }
         dev {
             dimension "environment"
-            buildConfigField 'String', 'AGORA_APP_ID', '"eeb3ec1dccd4484da05dbb3b12eba042"'
-            buildConfigField 'String', 'AGORA_CERTIFICATE', '"91c7e97dae294a118518714acf1ef12c"'
+            buildConfigField 'String', 'AGORA_APP_ID', '"889ade6394ef4f808a45bafb4243b2b4"'
+            buildConfigField 'String', 'AGORA_CERTIFICATE', '"472f82bc4e0947edb20c8592f016f1f8"'
         }
         prod {
             dimension "environment"

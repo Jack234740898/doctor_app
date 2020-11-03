@@ -119,7 +119,7 @@ public class PreviewPrescriptionFragment extends Fragment implements PreviewPres
         viewModel.prescriptionCreated.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean isPrescriptionCreated) {
-                /*if(isPrescriptionCreated) {
+                if(isPrescriptionCreated) {
                     SnackbarHelper.getCustomSnackBar(binding.getRoot(), "Medical Advice sent successfully!", null, SnackbarHelper.SnackbarTypes.INFO).show();
                     Observable.timer(3, TimeUnit.SECONDS, Schedulers.computation())
                             .subscribe(new Consumer<Long>() {
@@ -131,22 +131,22 @@ public class PreviewPrescriptionFragment extends Fragment implements PreviewPres
                 } else {
                     // prescription creation failed
                     SnackbarHelper.getCustomSnackBar(binding.getRoot(), "Unable to create Medical Advice! Please try again...", null, SnackbarHelper.SnackbarTypes.ERROR).show();
-                    binding.sendPrescriptionButton.setEnabled(false);
-                }*/
-                SnackbarHelper.getCustomSnackBar(binding.getRoot(), "Medical Advice sent successfully!", null, SnackbarHelper.SnackbarTypes.INFO).show();
-                Observable.timer(3, TimeUnit.SECONDS, Schedulers.computation())
-                        .subscribe(new Consumer<Long>() {
-                            @Override
-                            public void accept(Long aLong) throws Exception {
-                                if(getActivity() != null)
-                                    Navigator.navigateToMainView(getActivity());
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-
-                            }
-                        });
+                    binding.sendPrescriptionButton.setClickable(true);
+                }
+//                SnackbarHelper.getCustomSnackBar(binding.getRoot(), "Medical Advice sent successfully!", null, SnackbarHelper.SnackbarTypes.INFO).show();
+//                Observable.timer(3, TimeUnit.SECONDS, Schedulers.computation())
+//                        .subscribe(new Consumer<Long>() {
+//                            @Override
+//                            public void accept(Long aLong) throws Exception {
+//                                if(getActivity() != null)
+//                                    Navigator.navigateToMainView(getActivity());
+//                            }
+//                        }, new Consumer<Throwable>() {
+//                            @Override
+//                            public void accept(Throwable throwable) throws Exception {
+//
+//                            }
+//                        });
             }
         });
     }
@@ -213,7 +213,7 @@ public class PreviewPrescriptionFragment extends Fragment implements PreviewPres
 
     @Override
     public void createPrescription() {
-        binding.sendPrescriptionButton.setEnabled(false);
+        binding.sendPrescriptionButton.setClickable(false);
         viewModel.createPrescription();
     }
 

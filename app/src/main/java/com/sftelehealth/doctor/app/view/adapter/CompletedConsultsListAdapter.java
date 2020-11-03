@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.bumptech.glide.Glide;
+import com.sftelehealth.doctor.databinding.ItemCallbackRequestBinding;
+import com.sftelehealth.doctor.domain.model.CallbackRequest;
 import com.squareup.picasso.Picasso;
 import com.sftelehealth.doctor.R;
 import com.sftelehealth.doctor.app.view.adapter.listener.CompletedConsultsListener;
@@ -126,12 +129,19 @@ public class CompletedConsultsListAdapter extends RecyclerView.Adapter<RecyclerV
         public void bind(Object obj, Object listener) {
             super.bind(obj, listener);
 
-            Picasso.with(this.itemView.getContext())
-                    .load(CloudinaryUrlHelper.getProfileUrl(((Case)obj).getPatientImage()))
-                    .resize(100, 100)
+//            Picasso.with(this.itemView.getContext())
+//                    .load(CloudinaryUrlHelper.getProfileUrl(((Case)obj).getPatientImage()))
+//                    .resize(100, 100)
+//                    .placeholder(R.drawable.profile)
+//                    .onlyScaleDown()
+//                    .transform(new CircleTransform())
+//                    .into(((ItemActiveConsultBinding)this.binding).profilePic);
+
+            Glide
+                    .with(this.itemView.getContext())
+                    .load(((Case)obj).getPatientImage())
+                    .centerCrop()
                     .placeholder(R.drawable.profile)
-                    .onlyScaleDown()
-                    .transform(new CircleTransform())
                     .into(((ItemActiveConsultBinding)this.binding).profilePic);
         }
     }

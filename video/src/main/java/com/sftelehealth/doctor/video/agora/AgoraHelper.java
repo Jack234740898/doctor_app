@@ -69,7 +69,7 @@ public class AgoraHelper {
         }
 
         instance.context = context;
-
+        //TODO NEED LOGOUT
         if(!instance.isLogin || !instance.account.equals(account)) {
             instance.account = account;
             instance.login();
@@ -87,25 +87,9 @@ public class AgoraHelper {
         m_agoraAPI.callbackSet(agoraAPICallback);
     }
 
-    // Initialize media engine and set callback for media engine events
-    void initializeMediaAPI(Context context, IRtcEngineEventHandler rtcEngineEventHandler) {
-        try {
-            m_agoraMedia = RtcEngine.create(context, appID, rtcEngineEventHandler);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        m_agoraMedia.enableAudioVolumeIndication(1000, 3);
-        m_agoraMedia.setParameters("{\"rtc.log_filter\":32783}");//0x800f, log to console
-        m_agoraMedia.setLogFilter(32783);
-    }
 
     public AgoraAPIOnlySignal getAgoraAPI() {
         return m_agoraAPI;
-    }
-
-    public String getChannelID() {
-        return channelName;
     }
 
     public void login() {
@@ -162,6 +146,7 @@ public class AgoraHelper {
      */
     public void leaveAPIChannel() {
         m_agoraAPI.channelLeave(channelName);
+        instance.setAgoraAPICallback(null);
     }
 
     /**

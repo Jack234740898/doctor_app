@@ -1,5 +1,6 @@
 package com.sftelehealth.doctor.domain.model;
 
+import com.sftelehealth.doctor.domain.Domain;
 import com.sftelehealth.doctor.domain.helper.DateTimeComputationHelper;
 import com.sftelehealth.doctor.domain.helper.DateTimeHelper;
 
@@ -170,8 +171,7 @@ public class CallbackRequest {
     }
 
     public String getCreatedAtFormatted() {
-        DateTimeComputationHelper dtch = new DateTimeComputationHelper();
-        return DateTimeHelper.toLocaleDayTimeYear(dtch.convertGMTToIST(DateTimeHelper.parseDateTime(createdAt)));
+        return Domain.getTime(videoStartTime) +" to "+Domain.getTime(videoEndTime) +" | "+Domain.changeDateFormat(createdAt);
     }
 
     public String getStatusFormatted() {

@@ -148,9 +148,8 @@ public class VideoCallViewActivity extends AppCompatActivity {
 
         mRemoteView = RtcEngine.CreateRendererView(getBaseContext());
         mRemoteContainer.addView(mRemoteView);
-
-        mRtcEngine.setupRemoteVideo(new VideoCanvas(mRemoteView, VideoCanvas.RENDER_MODE_HIDDEN, uid));
         mRemoteView.setTag(uid);
+        mRtcEngine.setupRemoteVideo(new VideoCanvas(mRemoteView, VideoCanvas.RENDER_MODE_HIDDEN, uid));
     }
 
     private void onRemoteUserLeft() {
@@ -406,5 +405,7 @@ public class VideoCallViewActivity extends AppCompatActivity {
     private void handleError(Throwable t) {
         Toast.makeText(this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
     }
+
+
 
 }

@@ -1,5 +1,7 @@
 package com.sftelehealth.doctor.app.view.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sftelehealth.doctor.video.view.call.CallService;
 import com.sftelehealth.doctor.video.view.call.VideoCallViewActivity;
 import com.squareup.picasso.Picasso;
 import com.sftelehealth.doctor.R;
@@ -52,7 +55,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
     Disposable intervalSubscription;
 
     boolean activityCreated = false;
-
+    Activity activity;
     SharedPreferences sp;
 
     AlertDialog selectCallTypeAlertDialog;
@@ -173,12 +176,12 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
         viewModel.isCallButtonActive.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean aBoolean) {
-                if (aBoolean)
+//                if (aBoolean)
                     binding.callButtonLayout.centerButtonLayout.setSupportBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorAccent)));
-                else
-                    binding.callButtonLayout.centerButtonLayout.setSupportBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
-
-                binding.callButtonLayout.centerButtonLayout.setClickable(aBoolean);
+//                else
+//                    binding.callButtonLayout.centerButtonLayout.setSupportBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+//
+//                binding.callButtonLayout.centerButtonLayout.setClickable(aBoolean);
             }
         });
 
@@ -212,7 +215,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
     }
 
     private void startVideoCall() {
-        Intent videoCallIntent = new Intent(getContext(), VideoCallViewActivity.class);
+        Intent videoCallIntent = new Intent(activity, CallService.class);
         videoCallIntent.putExtra(Constant.VIDEO_CALL_STATE, Constant.VIDEO_CALL_INITIATE);
         videoCallIntent.putExtra("channel_name", "BD_channel_callback_id_"+viewModel.callbackRequest.get().getCallbackId());
         videoCallIntent.putExtra("callback_id", String.valueOf(viewModel.callbackRequest.get().getCallbackId()));
@@ -223,7 +226,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
         videoCallIntent.putExtra("patient_user_id", viewModel.callbackRequest.get().getPatient().getUserId());
         //videoCallIntent.putExtra("callback", viewModel.callbackRequest.get());
         viewModel.hasCallStarted = true;
-        startActivity(videoCallIntent);
+        activity.startService(videoCallIntent);
     }
 
     private void startVideoEmergencyCall() {
@@ -392,6 +395,16 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
             }
             break;
             default: viewModel.startCall = false;
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity) {
+            this.activity = (Activity) context;
+        } else {
+            this.activity = getActivity();
         }
     }
 }

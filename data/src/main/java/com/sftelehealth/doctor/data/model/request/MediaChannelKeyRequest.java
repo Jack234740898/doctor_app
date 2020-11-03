@@ -3,7 +3,7 @@ package com.sftelehealth.doctor.data.model.request;
 public class MediaChannelKeyRequest {
 
     String channelName;
-    String uid;//doctorID
+    String uid;//agoraSignalingServerUid
     int expiredTs;
     int userId;//patientUserId
     boolean emergencyCall;
