@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#484258">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -84,6 +85,15 @@
             android:src="@drawable/btn_unmute"
             android:scaleType="centerCrop"/>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_00_00"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_margin="@dimen/activity_horizontal_margin"/>
 
     <!--    <io.agora.uikit.logger.LoggerRecyclerView-->
     <!--        android:id="@+id/log_recycler_view"-->

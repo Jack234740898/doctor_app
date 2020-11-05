@@ -31,6 +31,7 @@ public class AgoraSignalHandler extends NativeAgoraAPI.CallBack {
 
     @Override
     public void onLoginSuccess(int uId, int i1) {
+        Log.d(TAG, "onLoginSuccess: "+uId);
         listener.loginSuccess(uId, i1);
     }
 
@@ -48,6 +49,7 @@ public class AgoraSignalHandler extends NativeAgoraAPI.CallBack {
     @Override
     public void onChannelJoined(String s) {
         Log.d(TAG, "onChannelJoined: ");
+        listener.channelJoined(s);
     }
 
     @Override
@@ -75,6 +77,7 @@ public class AgoraSignalHandler extends NativeAgoraAPI.CallBack {
     @Override
     public void onChannelUserList(String[] strings, int[] ints) {
         listener.channelUserList(strings, ints);
+        Log.d(TAG, "onChannelUserList: "+strings.length+" "+ints.length);
     }
 
     @Override

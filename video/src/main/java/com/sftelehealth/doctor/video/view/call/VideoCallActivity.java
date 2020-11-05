@@ -6,21 +6,26 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sftelehealth.doctor.video.Constant;
 import com.sftelehealth.doctor.video.R;
+
+import java.util.concurrent.TimeUnit;
 
 import io.agora.rtc.RtcEngine;
 
@@ -41,6 +46,7 @@ public class VideoCallActivity extends AppCompatActivity implements OnHandlerEve
     private RelativeLayout mRemoteContainer;
     private ImageView mCallBtn;
     private ImageView mMuteBtn;
+    private TextView timer;
     private ImageView mSwitchCameraBtn;
 
     @Override
@@ -55,6 +61,10 @@ public class VideoCallActivity extends AppCompatActivity implements OnHandlerEve
                 checkSelfPermission(REQUESTED_PERMISSIONS[2], PERMISSION_REQ_ID)) {
             initVideoCallView();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     private void initVideoCallView() {
@@ -132,6 +142,7 @@ public class VideoCallActivity extends AppCompatActivity implements OnHandlerEve
         mRemoteContainer = findViewById(R.id.remote_video_view_container);
         mCallBtn = findViewById(R.id.btn_call);
         mMuteBtn = findViewById(R.id.btn_mute);
+        timer = findViewById(R.id.time);
         mSwitchCameraBtn = findViewById(R.id.btn_switch_camera);
     }
 
@@ -141,7 +152,6 @@ public class VideoCallActivity extends AppCompatActivity implements OnHandlerEve
             ActivityCompat.requestPermissions(this, REQUESTED_PERMISSIONS, requestCode);
             return false;
         }
-
         return true;
     }
 
@@ -197,5 +207,27 @@ public class VideoCallActivity extends AppCompatActivity implements OnHandlerEve
         // Initializes the video view of a remote user.
         listener.remoteVideo(mRemoteView, uid);
         mRemoteView.setTag(uid);
+        setTimer();
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void setTimer(){
+        new CountDownTimer(300000, 1000) { // adjust the milli seconds here
+            long time = 1000;
+            public void onTick(long millisUntilFinished) {
+                time = time + 1000;
+                timer.setText(String.format("%02d:%02d",
+                        TimeUnit.MILLISECONDS.toMinutes( time),
+                        TimeUnit.MILLISECONDS.toSeconds(time) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))));
+            }
+
+            public void onFinish() {
+                endCall();
+                mCallEnd = true;
+                timer.setText(R.string._00_00);
+                mCallBtn.setImageResource(R.drawable.btn_startcall);
+            }
+        }.start();
     }
 }

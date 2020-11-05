@@ -10,4 +10,5 @@ public interface IAgoraSignalEventListener {
 
     void logoutSuccess();
 
+    void channelJoined(String s);
 }

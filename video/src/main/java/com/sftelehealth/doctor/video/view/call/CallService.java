@@ -17,6 +17,7 @@ import com.sftelehealth.doctor.data.net.RetrofitService;
 import com.sftelehealth.doctor.video.Constant;
 import com.sftelehealth.doctor.video.R;
 import com.sftelehealth.doctor.video.agora.AgoraHelper;
+import com.sftelehealth.doctor.video.helper.CallDataHelper;
 import com.sftelehealth.doctor.video.view.call.rtcEngineEvent.IRtcEngineEventListener;
 import com.sftelehealth.doctor.video.view.call.rtcEngineEvent.RtcEngineEventHandler;
 import com.sftelehealth.doctor.video.view.call.signalEvent.AgoraSignalHandler;
@@ -121,9 +122,13 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
 
     @Override
     public void logoutSuccess() {
-        listener.destroyCallView();
-        RtcEngine.destroy();
-        onDestroy();
+        leaveChannel();
+    }
+
+    @Override
+    public void channelJoined(String s) {
+        Log.d(TAG, "channelJoined: "+s);
+        agoraHelper.inviteUserToJoinChannel(getPatientAccount(notificationPayloadData.getPatientId()), "Hello");
     }
 
 
@@ -161,6 +166,14 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
         mRtcEngine.leaveChannel();
         agoraHelper.logout();
         agoraHelper.leaveAPIChannel();
+        listener.destroyCallView();
+        RtcEngine.destroy();
+        onDestroy();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     private void setupAgoraSignalEngine() {
@@ -222,6 +235,10 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
 
     public String getUserAccount(int doctorId) {
         return "doctor_" + doctorId;
+    }
+
+    public String getPatientAccount(int patientId) {
+        return "user_" + patientId;
     }
 
     private void startVideoCall() {
