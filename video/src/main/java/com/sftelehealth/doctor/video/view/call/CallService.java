@@ -66,8 +66,8 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
 
         restService = new RetrofitService();
         compositeDisposable = new CompositeDisposable();
-        setupAgoraSignalEngine();
-        setupRTCEngine(initiateRtcEngine());
+        getMediaChannelKey();
+
 
         return START_NOT_STICKY;
     }
@@ -107,12 +107,21 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
     @Override
     public void loginSuccess(int uId, int i1) {
         loginUserId = uId;
-        getMediaChannelKey();
     }
 
     @Override
     public void channelUserList(String[] strings, int[] ints) {
         Log.d(TAG, "channelUserList: ");
+        StringBuilder accountsString = new StringBuilder();
+        boolean hasServerJoined = false;
+        for (String tempUserAccount : strings) {
+            accountsString.append(tempUserAccount).append(", ");
+            if (!hasServerJoined && tempUserAccount.contains("server"))
+                hasServerJoined = true;
+        }
+
+        if (hasServerJoined)
+            joinChannel();
     }
 
     @Override
@@ -214,7 +223,9 @@ public class CallService extends Service implements IRtcEngineEventListener, IAg
     private void handleResults(Object object) {
         if (object instanceof MediaChannelResponse){
             token = ((MediaChannelResponse) object).getMediaChannelKey();
-            joinChannel();
+            setupAgoraSignalEngine();
+            setupRTCEngine(initiateRtcEngine());
+
         } else if (object instanceof CancelCallbackResponse){
 
         }
