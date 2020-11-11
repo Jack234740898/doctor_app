@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SAJIDA Telehealth Doctor</string>
+    <string name="app_name">SAJIDA Doctor</string>
 
     <!-- Main Activity -->
     <string name="no_consults">No Active Consults.\nYou can see patient records here once a consult is complete.</string>
@@ -52,11 +52,11 @@
     <string name="title_activity_terms_and_conditions">TermsAndConditionsActivity</string>
 
     <!-- Prescription Activity -->
-    <string name="use_desktop_app_to_update_diet_chart">Use the Doctor 24x7 Desktop Application to update the diet chart</string>
-    <string name="use_desktop_app_to_create_diet_chart">Use the Doctor 24x7 Desktop Application to create the diet chart</string>
+    <string name="use_desktop_app_to_update_diet_chart">Use the Sajida TeleHealth Doctor Desktop Application to update the diet chart</string>
+    <string name="use_desktop_app_to_create_diet_chart">Use the eleHealth Doctor Desktop Application to create the diet chart</string>
     <string name="use_desktop_app_to_create_diet_chart_in_proper_format">Please use the Doctor 24x7 Desktop Application to create the detailed diet chart.</string>
-    <string name="diet_chart_provided_by_desktop_app">Please use the Doctor 24x7 Desktop Application to update the detailed diet chart.</string>
-    <string name="use_desktop_app_to_edit">Please use the Doctor 24x7 Desktop Application to create the detailed diet chart.</string>
+    <string name="diet_chart_provided_by_desktop_app">Please use the SAJIDA TeleHealth Doctor Desktop Application to update the detailed diet chart.</string>
+    <string name="use_desktop_app_to_edit">Please use the SAJIDA TeleHealth Doctor Desktop Application to create the detailed diet chart.</string>
 
     <!-- General -->
     <string name="terms_and_conditions">Terms and Conditions</string>

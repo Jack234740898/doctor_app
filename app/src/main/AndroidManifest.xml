@@ -128,7 +128,8 @@
             android:exported="false"/>
 
         <service
-            android:name="com.sftelehealth.doctor.video.view.call.CallService" />
+            android:name="com.sftelehealth.doctor.video.view.call.CallService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <!--<receiver
             android:name=".app.receiver.SMSReceiver"

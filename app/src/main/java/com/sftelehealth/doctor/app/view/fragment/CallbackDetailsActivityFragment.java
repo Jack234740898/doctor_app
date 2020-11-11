@@ -180,7 +180,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
                     binding.callButtonLayout.centerButtonLayout.setSupportBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorAccent)));
 //                else
 //                    binding.callButtonLayout.centerButtonLayout.setSupportBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
-//
+
 //                binding.callButtonLayout.centerButtonLayout.setClickable(aBoolean);
             }
         });
@@ -311,7 +311,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
                                 if(viewModel.callbackRequest.get().getStatus().equalsIgnoreCase("Consulted")) {
                                     viewModel.emergencyCall();
                                 } else {
-                                    viewModel.initiateCall();
+//                                    viewModel.initiateCall();
                                 }
                             }
                         })
@@ -322,7 +322,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
 
     @Override
     public void initiateEmergencyCall() {
-        viewModel.initiateCall();
+//        viewModel.initiateCall();
     }
 
     @Override
@@ -353,7 +353,7 @@ public class CallbackDetailsActivityFragment extends Fragment implements Callbac
                         public void onClick(DialogInterface dialogInterface, int i) {
 
                             if (viewModel.callbackRequest.get().getCaseId() != 0 && !viewModel.callbackRequest.get().getStatus().equalsIgnoreCase("Accepted"))
-                                startVideoEmergencyCall();
+                                startVideoCall();
                             else
 //                                viewModel.initiateCall();
                                 startVideoCall();

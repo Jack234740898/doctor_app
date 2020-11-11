@@ -385,7 +385,7 @@ public class CallbackDetailsActivityFragmentViewModel extends ViewModel {
             if (callbackStatus.equalsIgnoreCase("Rejected"))
                 message = "This request was cancelled by you. The patient has been notified accordingly.";
             else
-                message = "This request was auto rejected by Doctor 24x7, as it was not accepted within" + dtch.getTimeFormatted(videoCallExpirationTime * 1000);
+                message = "This request was auto rejected by SAJIDA TeleHealth Doctor, as it was not accepted within" + dtch.getTimeFormatted(videoCallExpirationTime * 1000);
 
         } else if (callbackStatus.equalsIgnoreCase("Consulted")) {
 
@@ -393,7 +393,7 @@ public class CallbackDetailsActivityFragmentViewModel extends ViewModel {
             isPrescriptionButtonVisible.set(hasPrescription());
             isVideoCallbackTimeInfoVisible.set(false);
 
-            isCallButtonActive.postValue(true);
+            isCallButtonActive.postValue(false);
 
             if (callbackRequest.get().getConsultedAt() != null && !callbackRequest.get().getConsultedAt().equalsIgnoreCase("None")) {
                 //isCallButtonLayoutVisible = false;
